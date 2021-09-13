@@ -1,0 +1,17 @@
+<h2>Success! Please use this link: </h2>
+<input class="success_result" readonly/>
+<button class="btn btn-primary" onclick="copy()" value="Copy">Copy</button>
+<script>
+
+let hostname = document.querySelector('.success_result')
+hostname.value = window.location.href+ '{{ this.randomCode }}'
+console.log(hostname)
+
+function copy(){
+const successResult = document.querySelector('.success_result')
+successResult.select()
+  navigator.clipboard.writeText(successResult.value);
+}
+</script>
+
+
