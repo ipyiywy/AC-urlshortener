@@ -10,7 +10,6 @@ for(i=0; i<5; i++){
     let index = Math.floor(Math.random()*totalChar.length)
     randomCode += totalChar[index]
 }
-//console.log('a'+randomCode)
     return randomCode
 }
 
