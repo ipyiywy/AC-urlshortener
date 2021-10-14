@@ -3,11 +3,13 @@ const Schema = mongoose.Schema
 const urlShortenerSchema = new Schema({
     inputURL: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
     randomCode: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     }
    })
 

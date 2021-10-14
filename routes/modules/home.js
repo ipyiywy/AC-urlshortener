@@ -10,20 +10,22 @@ router.get('/', (req, res) => {
     return res.render('index')
 })
 
+
 //create data
 router.post('/', (req, res) => {
     const inputURL = req.body.inputURL
-    let randomid = ''
+    //let randomid = randomCode()
+    let randomid = 'IPIM7'
     urlShortener.find()
         .lean()
         .then(results => {
+            //check random code if already existed
+            while(results.find(e => e.randomCode == randomid)){
+                randomid = randomCode()
+            }
+            
+            //check URL if already existed
             const existURL = results.find(e => e.inputURL==inputURL)
-            const existRandomCode = results.find(e => randomid == e.randomCode)
-
-           if(existRandomCode) {
-               randomid = randomCode()
-           }
-
             if(existURL){
                 randomid = existURL.randomCode}
             else {
@@ -32,7 +34,9 @@ router.post('/', (req, res) => {
 
             res.render('success', { inputURL, randomCode: randomid })
         })
-        .catch((error) => console.log(error))
+        .catch((error) => {
+
+        })
 })
 
 module.exports = router
